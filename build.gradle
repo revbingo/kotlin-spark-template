@@ -27,3 +27,13 @@ dependencies {
     testCompile "com.nhaarman:mockito-kotlin:1.1.0"
     testCompile "net.sourceforge.htmlunit:htmlunit:2.25"
 }
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'ApplicationKt'
+    }
+
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+defaultTasks 'clean', 'build'
