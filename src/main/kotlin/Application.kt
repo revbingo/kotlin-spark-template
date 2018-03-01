@@ -23,7 +23,9 @@ class Application(val port: Int = 8080) {
         get() = VelocityTemplateEngine()
 
     fun ignite() {
-        port(8080)
+        staticFileLocation("/assets")
+
+        port(port)
 
         get("/") { _, _ ->
             render("hello.vm")
